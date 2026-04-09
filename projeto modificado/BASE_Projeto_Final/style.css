@@ -1,43 +1,212 @@
+@charset "UTF-8";
+
+/* ============================================================
+   style.css — base global
+   Centraliza variáveis, reset e estilos compartilhados
+   entre todas as páginas (index, cliente, pedido).
+   ============================================================ */
+
+/* --- Variáveis globais --- */
+:root {
+    --color-bg-page:      #0f2841;
+    --color-btn-primary:  #0b3a16;
+    --color-btn-danger:   #7f1d1d;
+    --color-text-light:   antiquewhite;
+    --color-card-bg:      #ffffff;
+    --color-border-input: rgba(255, 255, 255, 0.25);
+    --color-input-bg:     rgba(255, 255, 255, 0.08);
+    --color-shadow:       rgba(0, 0, 0, 0.15);
+    --radius-card:        5px;
+    --radius-input:       4px;
+    --font-base:          Arial, Helvetica, sans-serif;
+}
+
+/* --- Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-base);
+    box-sizing: border-box;
+}
+
+/* --- Body --- */
 body {
-  font-family: sans-serif;
-  padding: 20px;
-  
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-bg-page);
+    min-height: 100vh;
+}
 
-
-  
-  background-color: #0f2841;
-}
-form {
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  gap: 10px;
-}
-input {
-  padding: 8px;
-}
-button {
-  padding: 10px;
-  cursor: pointer;
-  background-color: #0b3a16;
-  color: white;
-  border: none;
-}
-#links{
-  text-align: center;
-}
-nav, a {
-  /* text-decoration: none; */
-  color: antiquewhite;
-  
-}
+/* --- Logo --- */
 img {
-  width: 180px;
-  height: 180px;
-  display: flex;
-  /* margin-right: 1090px; */
+    width: 180px;
+    height: 180px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* --- Navegação --- */
+#links {
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+#links a {
+    color: var(--color-text-light);
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 14px;
+}
+
+#links a:hover {
+    text-decoration: underline;
+}
+
+/* --- Títulos --- */
+h2, h3 {
+    color: var(--color-text-light);
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+/* --- Labels --- */
+label {
+    color: var(--color-text-light);
+    font-size: 14px;
+    /* Sem margens hardcoded — posicionamento fica a cargo do grid/flex do form */
+}
+
+/* --- Inputs --- */
+input {
+    border: 1px solid var(--color-border-input);
+    border-radius: var(--radius-input);
+    padding: 8px 10px;
+    font-size: 14px;
+    background-color: var(--color-input-bg);
+    color: white;
+    width: 100%;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+input:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* --- Botões --- */
+button {
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: var(--radius-input);
+    font-size: 14px;
+    background-color: #0b3a16;
+    color:antiquewhite
+    transition: opacity 0.15s;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+.btn-primary {
+    background-color: var(--color-btn-primary);
+}
+
+.btn-danger {
+    background-color: var(--color-btn-danger);
+}
+
+/* --- Card compartilhado (substitui as regras de table duplicadas) --- */
+.card {
+    background-color: var(--color-card-bg);
+    padding: 15px;
+    margin: 15px 5px;
+    border-radius: var(--radius-card);
+    box-shadow: 0 4px 20px var(--color-shadow);
+    /* Corrigido: era "100 21px 50px" — faltava unidade no primeiro valor */
+}
+
+/* --- Wrapper de tabela (scroll horizontal em telas pequenas) --- */
+.table-wrapper {
+    overflow-x: auto;
+    width: 100%;
+    margin-top: 15px;
+}
+
+/* --- Tabela base --- */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-family: var(--font-base);
+    background-color: var(--color-card-bg);
+    border-radius: var(--radius-card);
+    box-shadow: 0 4px 20px var(--color-shadow);
+    /* Removido: display: flex — quebrava inserção de linhas via JS */
+}
+
+th, td {
+    padding: 10px 14px;
+    border: 1px solid #e5e7eb;
+    text-align: left;
+    font-size: 14px;
+}
+
+th {
+    background-color: #f8fafc;
+    font-weight: 600;
+    color: #374151;
+}
+
+td {
+    color: #151616;
+}
+
+tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+/* --- Formulário base (grid 2 colunas) --- */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+/* --- Linha de botões --- */
+.btn-row {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-row button {
+    flex: 1;
+}
+
+/* --- Mensagem de feedback --- */
+#mensagemCliente,
+#mensagemPedido {
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: 13px;
+    margin-top: 8px;
+    min-height: 18px;
 }

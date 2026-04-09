@@ -1,20 +1,39 @@
-h2 ,h3 {
-    color: antiquewhite;
-}
-label {
-    color: antiquewhite;
-}
-table {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
- 
-    font-family: Arial, Helvetica, sans-serif;
+/* ============================================================
+   index.css — página Lista de Produtos
+   Herda variáveis e base do style.css.
+   Apenas sobrescritas e estilos exclusivos desta página aqui.
+   ============================================================ */
 
-    background-color: white;
-    padding: 15px;
-    margin: 15px 5px;
-    border-radius: 5px;
-    box-shadow: 100 21px 50px rgba(0, 0, 0,0.10);
+/* --- Seção de busca / filtros (específica desta página) --- */
+#sessaoProdutos {
+    width: 100%;
+    max-width: 900px;
+}
+
+/* --- Formulário de produto: grid de 2 colunas --- */
+#formProduto {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Campos de descrição ou observação ocupam linha inteira */
+#formProduto .full-width {
+    grid-column: 1 / -1;
+}
+
+/* --- Botão de salvar produto --- */
+#btnSalvar {
+    background-color: var(--color-btn-primary);
+    /* color: black; */
+}
+
+/* --- Botão de cancelar produto --- */
+#btnCancelarProduto {
+    background-color: var(--color-btn-danger);
+    display: none;
+    /* Removido: inline style do HTML — controlado aqui */
 }

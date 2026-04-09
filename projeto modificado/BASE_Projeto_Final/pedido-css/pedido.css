@@ -1,25 +1,70 @@
-h2 ,h3 {
-    color: antiquewhite;
-    text-align: center  ;
-}
-label {
-    color: antiquewhite;
-    text-align: center;
-}
-table {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
- 
-    font-family: Arial, Helvetica, sans-serif;
+/* ============================================================
+   pedido.css — página Pedidos
+   Herda variáveis e base do style.css.
+   Apenas sobrescritas e estilos exclusivos desta página aqui.
+   ============================================================ */
 
-    background-color: white;
-    padding: 15px;
-    margin: 15px 5px;
-    border-radius: 5px;
-    box-shadow: 100 21px 50px rgba(0, 0, 0,0.10);
+/* --- Seção principal --- */
+#sessaoPedidos {
+    width: 100%;
+    max-width: 900px;
 }
-#stsC{
-    background-color: red;
+
+/* --- Formulário de pedido: grid de 2 colunas --- */
+#formPedido {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#formPedido .full-width {
+    grid-column: 1 / -1;
+}
+
+/* --- Botão salvar pedido --- */
+#btnSalvarPedido {
+    background-color: var(--color-btn-primary);
+}
+
+/* --- Botão cancelar pedido --- */
+#btnCancelarPedido {
+    background-color: var(--color-btn-danger);
+    display: none;
+}
+
+/* --- Badge de status do pedido ---
+   Substituição do "#stsC { background-color: red }" por
+   classes semânticas reutilizáveis para cada estado.
+   Uso no HTML: <span class="status status--cancelado">Cancelado</span>
+   ---------------------------------------------------------- */
+.status {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.status--pendente {
+    background-color: #fef9c3;
+    color: #854d0e;
+}
+
+.status--aprovado {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.status--cancelado {
+    background-color: #fee2e2;
+    color: #991b1b;
+    /* Substituído: #stsC { background-color: red } — cor crua de debug */
+}
+
+.status--entregue {
+    background-color: #e0f2fe;
+    color: #075985;
 }

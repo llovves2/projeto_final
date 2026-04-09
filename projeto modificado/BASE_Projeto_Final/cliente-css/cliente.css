@@ -1,34 +1,40 @@
-h2 ,h3 {
-    color: antiquewhite;
-    text-align: center;
-}
-label {
-    color: antiquewhite;
-    text-align: center;
-    margin-left: 200px;
+/* ============================================================
+   cliente.css — página Clientes
+   Herda variáveis e base do style.css.
+   Apenas sobrescritas e estilos exclusivos desta página aqui.
+   ============================================================ */
 
+/* --- Seção principal --- */
+#sessaoClientes {
+    width: 100%;
+    max-width: 900px;
 }
-input {
-text-align: center;
-margin-left: 100px;
-margin-right: -100px;
-}
-table {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
- 
-    font-family: Arial, Helvetica, sans-serif;
 
-    background-color: white;
-    padding: 15px;
-    margin: 15px 5px;
-    border-radius: 5px;
-    box-shadow: 100 21px 50px rgba(0, 0, 0,0.10);
+/* --- Formulário de cliente: grid de 2 colunas --- */
+#formCliente {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    /* Removido: margens hardcoded (margin-left: 200px, margin-right: -100px) */
 }
+
+/* Campos que precisam de linha inteira */
+#formCliente .full-width {
+    grid-column: 1 / -1;
+}
+
+/* --- Botão salvar cliente --- */
 #btnSalvarCliente {
-    margin-left: 100px;
-    margin-right: -100px;
+    background-color: var(--color-btn-primary);
+    /* Removidos: margin-left: 100px e margin-right: -100px */
+}
 
+/* --- Botão cancelar cliente --- */
+#btnCancelarCliente {
+    background-color: var(--color-btn-danger);
+    display: none;
+    /* Removido: style inline "background-color: red" do HTML */
 }
