@@ -1,11 +1,5 @@
 @charset "UTF-8";
 
-/* ============================================================
-   style.css — base global
-   Centraliza variáveis, reset e estilos compartilhados
-   entre todas as páginas (index, cliente, pedido).
-   ============================================================ */
-
 /* --- Variáveis globais --- */
 :root {
     --color-bg-page:      #0f2841;
